@@ -12,19 +12,28 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName)
 
-
-/*     db.collection('tasks').insertOne({
-        description: 'laundry', 
-        completed: false}
-    , (error, result) => {
+/*     db.collection('users').findOne({ name: 'Tyler'}, (error, user) => {
         if (error) {
-            return console.log('unable to insert documents')
+            return console.log('unable to find user')
         }
 
-        console.log(result)
+        console.log(user)
     }) */
 
+/*     db.collection('users').find({age: 26}).toArray((error, count) => {
+        if (error) {
+            return console.log('no users found')
+        }
 
+        console.log(count)
+    }) */
+
+    db.collection('tasks').find({completed: false}).toArray((error, tasks) => {
+        if (error) {
+            return console.log('no tasks found')
+        }
+        console.log(tasks)
+    })
     
 
 })
