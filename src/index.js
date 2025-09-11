@@ -12,10 +12,25 @@ app.use(userRouter)
 app.use(taskRouter)
 
 
-// TO START DB: ./mondod --dbpath="C:Users/tyler/mongodb-data"
+// TO START DB: cd C:\Users\tyler\mongodb\bin
+// ./mongod --dbpath="C:\Users\tyler\mongodb-data"
 
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
+const bcrypt = require('bcryptjs')
+
+const myFunction = async () => {
+    const password = 'Red123!'
+    const hashedPassword = await bcrypt.hash(password, 8)
+
+    console.log(password)
+    console.log(hashedPassword)
+
+    const isMatch = await bcrypt.compare('red123!', hashedPassword)
+    console.log(isMatch)
+}
+
+myFunction()
