@@ -1,14 +1,8 @@
 const mongoose = require('mongoose')
+const DB_URL = process.env.DB_URL
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api')
+mongoose.connect(DB_URL)
 
-
-
-/* me.save().then(() => {
-    console.log(me)
-}).catch((error) => {
-    console.log(`Error: ${error}`)
-}) */
 
 
 
